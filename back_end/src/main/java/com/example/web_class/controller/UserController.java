@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 *@Description 用户控制层
 *@Author CaesarDing
 *@Date 2020/11/15
-*@Time 15:07
+*@Version 1.0.0
 */
 @RestController
 @RequestMapping("/api/user/")
