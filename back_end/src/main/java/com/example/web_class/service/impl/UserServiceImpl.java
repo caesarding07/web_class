@@ -1,17 +1,14 @@
-package com.example.login.service.impl;
+package com.example.web_class.service.impl;
 
-import com.example.login.dao.UserMapper;
-import com.example.login.domain.User;
-import com.example.login.service.UserService;
-import org.apache.ibatis.session.ResultContext;
+import com.example.web_class.dao.UserMapper;
+import com.example.web_class.domain.User;
+import com.example.web_class.service.UserService;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.lf5.util.Resource;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;

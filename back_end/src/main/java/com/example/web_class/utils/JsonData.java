@@ -1,4 +1,4 @@
-package com.example.login.utils;
+package com.example.web_class.utils;
 
 public class JsonData {
     private int code;

@@ -1,4 +1,4 @@
-package com.example.login;
+package com.example.web_class;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

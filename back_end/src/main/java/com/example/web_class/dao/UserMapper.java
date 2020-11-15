@@ -1,6 +1,6 @@
-package com.example.login.dao;
+package com.example.web_class.dao;
 
-import com.example.login.domain.User;
+import com.example.web_class.domain.User;
 import org.springframework.stereotype.Service;
 
 @Service

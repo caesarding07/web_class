@@ -1,8 +1,8 @@
-package com.example.login.controller;
+package com.example.web_class.controller;
 
-import com.example.login.LoginApplication;
-import com.example.login.domain.User;
-import com.example.login.service.UserService;
+import com.example.web_class.LoginApplication;
+import com.example.web_class.domain.User;
+import com.example.web_class.service.UserService;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.jupiter.api.Assertions.*;
 /*不加这两个注解会出现空指针异常*/
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {LoginApplication.class})

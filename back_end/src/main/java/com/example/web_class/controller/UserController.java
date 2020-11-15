@@ -1,8 +1,8 @@
-package com.example.login.controller;
+package com.example.web_class.controller;
 
-import com.example.login.domain.User;
-import com.example.login.service.UserService;
-import com.example.login.utils.JsonData;
+import com.example.web_class.domain.User;
+import com.example.web_class.service.UserService;
+import com.example.web_class.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,13 +14,13 @@ public class UserController {
     private UserService userService;
 
 //    响应用户对于页面的get请求，去掉以后无法显示页面
-    @GetMapping("/login")
+    @GetMapping("api/user/login")
     public ModelAndView login(ModelAndView modelAndView){
-        modelAndView.setViewName("login");
+        modelAndView.setViewName("web_class");
         return modelAndView;
     }
 
-    @PostMapping("/login")
+    @PostMapping("api/user/login")
     public JsonData login(
             @RequestParam(value = "username",required = false) String username,
             @RequestParam(value = "password",required = false) String password,
@@ -31,5 +31,10 @@ public class UserController {
         String token=userService.login(user);
         System.out.println(username+":"+password+"==="+token);
         return token != null ? JsonData.buildSuccess(token):JsonData.buildError("error");
+    }
+    @PostMapping("api/user/register")
+    public JsonData register(){
+        User user = new User();
+        return null;
     }
 }
