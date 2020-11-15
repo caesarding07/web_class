@@ -88,6 +88,15 @@
             <version>2.9.2</version>
         </dependency>
 
+        <!-- 通过简单的注解的形式来帮助我们简化消除一些必须有但显得很臃肿的 Java 代码 -->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.2</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

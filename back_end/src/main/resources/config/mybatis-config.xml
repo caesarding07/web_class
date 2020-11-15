@@ -35,6 +35,6 @@
     <!--    映射器mappers：设置对应的数据库操作-->
     <!-- 使用相对于类路径的资源引用 -->
     <mappers>
-        <mapper resource="com/example/web_class/mapper/UserMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
     </mappers>
 </configuration>
