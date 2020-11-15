@@ -1,4 +1,4 @@
-package com.example.web_class.swagger.config;
+package com.example.web_class.config;
 
 import com.google.common.base.Predicate;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +39,7 @@ public class SpringfoxSwagger2Config {
                 //添加过滤条件，谓词过滤predicate，这里是自定义注解进行过滤
                 //.apis(not(withMethodAnnotation(SwaggerCustomIgnore.class)))
                 //这里配合@ComponentScan一起使用，又再次细化了匹配规则(当然，我们也可以只选择@ComponentScan、paths()方法当中的一中)
-                .paths(allowPaths())
+//                .paths(allowPaths())
                 .build();
     }
     /**
@@ -53,14 +53,14 @@ public class SpringfoxSwagger2Config {
     */
     private ApiInfo swaggerDemoApiInfo() {
         //构建联系实体，在UI界面会显示
-        Contact contact = new Contact("web_class", "http://localhost:8080", "caesarding07@gmail.com");
+        Contact contact = new Contact("web_class", "http://caesarding.space", "caesarding07@gmail.com");
         return new ApiInfoBuilder()
                 //联系人信息
                 .contact(contact)
                 //文档标题
-                .title("Swagger2构建RESTFul API文档")
+                .title("WebClass")
                 //文档描述
-                .description("SpringBoot集成Springbox开源项目，实现OAS，构建成RESTful API文档")
+                .description("WebClass API document 2020.11")
                 //文档版本
                 .version("1.0.0")
                 .build();
@@ -76,7 +76,7 @@ public class SpringfoxSwagger2Config {
     */
     private Predicate<String> allowPaths() {
         return or(
-                PathSelectors.regex("/user.*")
+                PathSelectors.regex("/api/user/*")
         );
     }
 }

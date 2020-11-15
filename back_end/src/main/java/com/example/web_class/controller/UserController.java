@@ -6,21 +6,27 @@ import com.example.web_class.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
+/**
+*@ClassName: UserController
+*@Description 用户控制层
+*@Author CaesarDing
+*@Date 2020/11/15
+*@Time 15:07
+*/
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/user/")
 public class UserController {
     @Autowired
     private UserService userService;
 
 //    响应用户对于页面的get请求，去掉以后无法显示页面
-    @GetMapping("api/user/login")
+    @GetMapping("login")
     public ModelAndView login(ModelAndView modelAndView){
         modelAndView.setViewName("web_class");
         return modelAndView;
     }
 
-    @PostMapping("api/user/login")
+    @PostMapping("login")
     public JsonData login(
             @RequestParam(value = "username",required = false) String username,
             @RequestParam(value = "password",required = false) String password,
@@ -32,7 +38,7 @@ public class UserController {
         System.out.println(username+":"+password+"==="+token);
         return token != null ? JsonData.buildSuccess(token):JsonData.buildError("error");
     }
-    @PostMapping("api/user/register")
+    @PostMapping("register")
     public JsonData register(){
         User user = new User();
         return null;

@@ -1,6 +1,6 @@
 package com.example.web_class.controller;
 
-import com.example.web_class.LoginApplication;
+import com.example.web_class.WebClassApplication;
 import com.example.web_class.domain.User;
 import com.example.web_class.service.UserService;
 import junit.framework.TestCase;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 /*不加这两个注解会出现空指针异常*/
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {LoginApplication.class})
+@SpringBootTest(classes = {WebClassApplication.class})
 class UserControllerTest {
     @Autowired
     private UserService userService;
