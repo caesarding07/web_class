@@ -9,4 +9,5 @@ package com.example.web_class.dao;
  */
 public interface mailMapper {
     //TODO 接口需要定义一下
+
 }

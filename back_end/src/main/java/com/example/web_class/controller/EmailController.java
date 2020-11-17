@@ -5,10 +5,7 @@ import com.example.web_class.service.MailService;
 import com.example.web_class.utils.JsonData;
 import com.example.web_class.utils.Result;
 import com.example.web_class.utils.ResultGenerator;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -20,6 +17,8 @@ import java.util.List;
  * @Date 2020/11/15
  * @Version 1.0.0
  */
+//origins:允许可访问的域列表 maxAge:准备响应前的缓存持续的最大时间
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RestController
 @RequestMapping("/api/email/")
 public class EmailController {

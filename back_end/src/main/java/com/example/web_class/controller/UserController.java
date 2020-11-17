@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 *@Date 2020/11/15
 *@Version 1.0.0
 */
+
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RestController
 @RequestMapping("/api/user/")
 public class UserController {
@@ -20,11 +22,11 @@ public class UserController {
     private UserService userService;
 
 //    响应用户对于页面的get请求，去掉以后无法显示页面
-    @GetMapping("login")
-    public ModelAndView login(ModelAndView modelAndView){
-        modelAndView.setViewName("web_class");
-        return modelAndView;
-    }
+//    @GetMapping("login")
+//    public ModelAndView login(ModelAndView modelAndView){
+//        modelAndView.setViewName("web_class");
+//        return modelAndView;
+//    }
 
     @PostMapping("login")
     public JsonData login(

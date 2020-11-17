@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index</title>
+	<script></script>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	
+</head>
+<body>	
+			<div class="container">
+			  <div class="navbar-header">
+				<a class="navbar-brand" href="#">用户邮箱查询</a>
+			  </div>
+			  <div id="navbar" class="navbar-collapse collapse">
+				<form class="navbar-form navbar-right" onsubmit="return false;" id="searchForm">
+				  <div class="form-group">
+					<input type="text" placeholder="查询邮箱" name="searchContent" class="form-control">
+				  </div>
+				  <button type="button" class="btn btn-success" id="searchBtn" >search</button>
+				</form>
+			  </div><!--/.navbar-collapse -->
+			</div>
+		  <div class="container">
+			
+		  </div>
+
+		<div class="container">
+			<div class="row">
+				<table class="table" id="table">
+					<thead>
+						<tr>
+							<th>user_id</th>
+							<th>userName</th>
+							<th>userPwd</th>
+							<th>mail</th>
+							<th>激活状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr><td><button id='add' class="btn btn-primary">添加邮箱</button></td></tr>
+					</tfoot>
+					
+				</table>
+			</div>
+		
+	</div>
+
+</body>
+<script src="js/index.js"></script>
+</html>

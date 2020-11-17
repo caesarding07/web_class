@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.web_class.dao.UserMapper">
+    <cache eviction="LRU" flushInterval="100000" readOnly="true" size="1024"/>
     <resultMap id="UserMailResultMap" type="com.example.web_class.domain.User">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="user_name" property="userName" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
         <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
-
+        <!--  resultMap中可用<collection>标签接收一对多的返回结果-->
         <collection property="userMailList" ofType="com.example.web_class.domain.Mail">
             <id column="mail_id" property="id" jdbcType="INTEGER"/>
             <result column="mail_name" property="mailName" jdbcType="VARCHAR"/>
@@ -14,5 +15,39 @@
             <result column="is_used" property="isUsed" jdbcType="INTEGER"/>
         </collection>
     </resultMap>
-<!--    <select id="findAll"-->
+    <!--查询所有用户的邮箱-->
+    <select id="queryUserMail" resultMap="UserMailResultMap" useCache="false">
+        select
+              u.id,
+              u.user_name,
+              u.pwd,
+              u.mobile,
+              m.id mail_id,
+              m.mail_name,
+              m.is_used,
+              m.user_id
+       from mybatis_db.mails m left join mail.users u on m.user_id=u.id
+    </select>
+    <!--添加用户邮箱-->
+    <insert id="addUserMail" parameterType="com.example.web_class.domain.Mail" >
+        insert into mybatis_db.mails (mail_name,user_id,is_used)
+        values (#{mail_name},#{user_id},#{is_used})
+    </insert>
+    <!--通过邮箱查询用户-->
+    <select id="selectByMailName" parameterType="java.lang.String" resultMap="UserMailResultMap">
+        select u.user_name,u.pwd,m.mail_name
+        from mybatis_db.mails m left join mail.users u on u.id=m.user_id
+        where m.mail_name like concat(#{mail_name},'%')
+    </select>
+    <!--修改邮箱-->
+    <update id="updateMail" parameterType="com.example.demo.domain.Mail">
+        update mybatis_db.mails
+        set mail_name=#{mail_name,jdbcType=VARCHAR},is_used=#{is_used,jdbcType=INTEGER}
+        where id=#{id,jdbcType=INTEGER};
+    </update>
+    <!--注销邮箱-->
+    <delete id="deleteUserMail" parameterType="java.lang.Integer">
+        delete from mybatis_db.mails
+        where id=#{mail_id,jdbcType=INTEGER}
+    </delete>
 </mapper>
