@@ -7,7 +7,7 @@ package com.example.web_class.dao;
  * @Date 2020/11/15
  * @Version 1.0.0
  */
-public interface mailMapper {
+public interface MailMapper {
     //TODO 接口需要定义一下
 
 }

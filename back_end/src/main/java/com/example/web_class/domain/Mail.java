@@ -1,9 +1,7 @@
 package com.example.web_class.domain;
 
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * @ClassName: Mail
@@ -13,9 +11,12 @@ import lombok.ToString;
  * @Version 1.0.0
  */
 
-@Setter
-@Getter
-@ToString
+@Data
+@Builder
+//无参构造器
+@NoArgsConstructor
+//全参构造器
+@AllArgsConstructor
 public class Mail {
     private int id;
     private String mailName;

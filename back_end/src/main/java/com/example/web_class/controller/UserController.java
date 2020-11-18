@@ -1,11 +1,19 @@
 package com.example.web_class.controller;
 
+
 import com.example.web_class.domain.User;
 import com.example.web_class.service.UserService;
 import com.example.web_class.utils.JsonData;
+import com.example.web_class.utils.Result;
+import com.example.web_class.utils.ResultGenerator;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.annotation.Resource;
+
 /**
 *@ClassName: UserController
 *@Description 用户控制层
@@ -15,31 +23,23 @@ import org.springframework.web.servlet.ModelAndView;
 */
 
 @CrossOrigin(origins = "*",maxAge = 3600)
+@Api(value="用户controller",tags={"用户操作接口"})
 @RestController
 @RequestMapping("/api/user/")
 public class UserController {
     @Autowired
     private UserService userService;
 
-//    响应用户对于页面的get请求，去掉以后无法显示页面
-//    @GetMapping("login")
-//    public ModelAndView login(ModelAndView modelAndView){
-//        modelAndView.setViewName("web_class");
-//        return modelAndView;
-//    }
-
+    @ApiOperation(value="获取用户信息",tags={"获取用户信息"},notes="注意问题点")
     @PostMapping("login")
-    public JsonData login(
-            @RequestParam(value = "username",required = false) String username,
-            @RequestParam(value = "password",required = false) String password,
-            ModelAndView modelAndView){
-        User user =new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        String token=userService.login(user);
-        System.out.println(username+":"+password+"==="+token);
-        return token != null ? JsonData.buildSuccess(token):JsonData.buildError("error");
-    }
+    public Result login(@RequestBody User user){
+//        User user = User.builder().username(username).password(password).build();
+        System.out.println(user);
+        System.out.println(user.getUsername()+":"+user.getPassword());
+        String data = userService.login(user);
+        return data!=null? ResultGenerator.genSuccessResult(data):ResultGenerator.genFailResult("账号密码错误！");
+    };
+
     @PostMapping("register")
     public JsonData register(){
         User user = new User();

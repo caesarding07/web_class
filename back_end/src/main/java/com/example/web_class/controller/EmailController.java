@@ -20,7 +20,7 @@ import java.util.List;
 //origins:允许可访问的域列表 maxAge:准备响应前的缓存持续的最大时间
 @CrossOrigin(origins = "*",maxAge = 3600)
 @RestController
-@RequestMapping("/api/email/")
+@RequestMapping("/api/mail/")
 public class EmailController {
     @Resource
     private MailService mailService;

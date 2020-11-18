@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.web_class.dao.UserMapper">
+<mapper namespace="com.example.web_class.dao.MailMapper">
     <cache eviction="LRU" flushInterval="100000" readOnly="true" size="1024"/>
-    <resultMap id="UserMailResultMap" type="com.example.web_class.domain.User">
+    <resultMap id="UserMailResultMap" type="com.example.web_class.dao.MailMapper">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="user_name" property="userName" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
         <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
         <!--  resultMap中可用<collection>标签接收一对多的返回结果-->
-        <collection property="userMailList" ofType="com.example.web_class.domain.Mail">
+        <collection property="userMailList"   ofType="com.example.web_class.dao.MailMapper" javaType="list">
             <id column="mail_id" property="id" jdbcType="INTEGER"/>
             <result column="mail_name" property="mailName" jdbcType="VARCHAR"/>
             <result column="user_id" property="userId" jdbcType="INTEGER"/>
@@ -40,7 +40,7 @@
         where m.mail_name like concat(#{mail_name},'%')
     </select>
     <!--修改邮箱-->
-    <update id="updateMail" parameterType="com.example.demo.domain.Mail">
+    <update id="updateMail" parameterType="com.example.web_class.domain.Mail">
         update mybatis_db.mails
         set mail_name=#{mail_name,jdbcType=VARCHAR},is_used=#{is_used,jdbcType=INTEGER}
         where id=#{id,jdbcType=INTEGER};

@@ -2,6 +2,7 @@ package com.example.web_class.service;
 
 
 import com.example.web_class.domain.Mail;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @Date 2020/11/15
  * @Version 1.0.0
  */
-
+@Service
 public interface MailService {
     String add(Mail mail);
     String select(Mail mail);
