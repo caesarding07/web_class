@@ -48,7 +48,9 @@ public class MailServiceImpl implements MailService {
 
     @Override
     public List<Mail> select(String mail_name) {
+        System.out.println("正在查询，请稍后");
         List<Mail> list = mailMapper.selectByMailName(mail_name);
+        System.out.println("查询结果："+list);
         return list;
     }
 

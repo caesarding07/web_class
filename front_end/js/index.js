@@ -89,9 +89,9 @@ $(document).ready(function () {
                 //parseJSON:将符合标准格式的的JSON字符串转为与之对应的JavaScript对象。
                 // result = $.parseJSON(response.data);
                 result = JSON.stringify(response.data);
-                console.log("result:" + result);
+                console.log("查询返回结果 result:" + result);
                 str = "";
-                if (response.data.result == null) {
+                if (response.data == "") {
                     str += "<tr>";
                     str += "<td colspan='6'>There is no user</td>";
                     str += "</tr>";
