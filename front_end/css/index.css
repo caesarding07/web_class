@@ -1,0 +1,22 @@
+h1{
+    margin-bottom: 20px;
+}
+#content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+table{
+    width: 100%;
+}
+table,tr,td{
+    border: 2px solid black;
+}
+thead{
+    background-color: pink;
+}
+td{
+    width: 10em;
+    text-align: center;
+}

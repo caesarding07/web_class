@@ -16,18 +16,25 @@
 </div>
 <script>
     function login(){
+        var username=$("#username").val();
+        var password=$("#password").val();
+        var user= {
+            username:username,
+            password:password
+        }
+        console.log(username+"  "+password);
         $.ajax({
             type:"POST",
             dataType:"json",
-            url:"/login",
+            contentType: "application/json;charset=utf-8",
+            url:"http:localhost:8080/api/user/login",
             // ajax传输表单数据
-            data:$('#form').serialize(),
+            data:JSON.stringify(user),
             success: function (result){
-                alert(result.code);
-                if (result.code==0){
-                    window.location.href="index";
+                if (result.code==200){
+                    window.location.href="../index.html";
                 }else {
-                    alert("用户名或密码错误");
+                    alert(result.code + "用户名或密码错误");
                 }
             },
             error:function (){

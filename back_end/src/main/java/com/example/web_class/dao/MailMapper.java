@@ -1,5 +1,9 @@
 package com.example.web_class.dao;
 
+import com.example.web_class.domain.Mail;
+
+import java.util.List;
+
 /**
  * @ClassName: mailMapper
  * @Description: mail接口
@@ -9,5 +13,9 @@ package com.example.web_class.dao;
  */
 public interface MailMapper {
     //TODO 接口需要定义一下
-
+    List<Mail> findAll();
+    List<Mail> selectByMailName();
+    int addUserMail(Mail mail);
+    int deleteMail(int mail_id);
+    int modifyMail(Mail mail);
 }

@@ -5,6 +5,7 @@ import com.example.web_class.service.MailService;
 import com.example.web_class.utils.JsonData;
 import com.example.web_class.utils.Result;
 import com.example.web_class.utils.ResultGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,13 +23,24 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/mail/")
 public class EmailController {
-    @Resource
+    @Autowired
     private MailService mailService;
 
     @PostMapping("add")
-    public Result add(
+    public Result add(@RequestBody Mail mail
     ){
-        return null;
+        int code = mailService.addUserMail(mail);
+        System.out.println("创建 code"+code);
+        return code != 0?ResultGenerator.genSuccessResult("创建成功"):ResultGenerator.genFailResult("创建失败");
+    }
+
+    @PostMapping("/delete")
+    public JsonData deleteMail(@RequestParam("mail_id") int mail_id){
+        System.out.println(mail_id);
+        int res=mailService.deleteMail(mail_id);
+//        int res = 1;
+        System.out.println(res);
+        return res==1?JsonData.buildSuccess("注销成功!"):JsonData.buildError("注销失败!");
     }
 
     @PostMapping("logout")
@@ -37,19 +49,22 @@ public class EmailController {
     }
 
     @PostMapping("select")
-    public Result select(){
-        return null;
+    public Result select(@RequestParam("mail_name") String mail_name){
+        List<Mail> list = mailService.select(mail_name);
+        return list!=null?ResultGenerator.genSuccessResult(list):ResultGenerator.genFailResult("没有该邮箱！");
     }
 
     @PostMapping("modify")
-    public Result modify(){
-        return null;
+    public Result modify(@RequestBody Mail mail){
+        int code = mailService.modify(mail);
+        System.out.println("修改 code"+code);
+        return code != 0?ResultGenerator.genSuccessResult("修改成功"):ResultGenerator.genFailResult("修改失败");
     }
 
     @PostMapping("list")
     public Result list(){
         List<Mail> list = mailService.findAll();
-        return ResultGenerator.genSuccessResult(list);
+        return list!=null?ResultGenerator.genSuccessResult(list):ResultGenerator.genFailResult("没有用户注册邮箱");
     }
 
 }

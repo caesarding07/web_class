@@ -15,9 +15,10 @@ import java.util.List;
  */
 @Service
 public interface MailService {
-    String add(Mail mail);
-    String select(Mail mail);
-    String modify(Mail mail);
+    int addUserMail(Mail mail);
+    int deleteMail(int mail_id);
+    List<Mail> select(String mail_name);
+    int modify(Mail mail);
     String logout(Mail mail);
     List<Mail> findAll();
 }

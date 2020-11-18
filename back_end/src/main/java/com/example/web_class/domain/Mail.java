@@ -19,7 +19,7 @@ import lombok.*;
 @AllArgsConstructor
 public class Mail {
     private int id;
-    private String mailName;
-    private int userId;
-    private int isUsed;
+    private String mail_name;
+    private int user_id;
+    private int is_used;
 }
