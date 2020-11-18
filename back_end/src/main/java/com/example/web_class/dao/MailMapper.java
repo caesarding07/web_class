@@ -14,7 +14,7 @@ import java.util.List;
 public interface MailMapper {
     //TODO 接口需要定义一下
     List<Mail> findAll();
-    List<Mail> selectByMailName();
+    List<Mail> selectByMailName(String mail_name);
     int addUserMail(Mail mail);
     int deleteMail(int mail_id);
     int modifyMail(Mail mail);

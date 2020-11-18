@@ -48,7 +48,7 @@ public class MailServiceImpl implements MailService {
 
     @Override
     public List<Mail> select(String mail_name) {
-        List<Mail> list = mailMapper.selectByMailName();
+        List<Mail> list = mailMapper.selectByMailName(mail_name);
         return list;
     }
 
